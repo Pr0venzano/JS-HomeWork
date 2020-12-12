@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        alert(`null == 0 : ${null == 0}`); // -> false
+        // Вывод: 0 это не null
+
+        alert(`null < 0 : ${null < 0}`); // -> false
+        alert(`null > 0 : ${null > 0}`); // -> false
+        // Вывод: null не больше и не меньше 0, т.е. не находится в множествах положительных и отрецательных чисел
+
+        alert(`null <= 0 : ${null <= 0}`); // -> true
+        alert(`null >= 0 : ${null >= 0}`); // -> true
+        // Вывод: null не больше и не меньше 0, не сам 0, но при этом принаджелит к и к отрезку от 0+ и 0-
+
+
+        alert(`тип 0 : ${typeof 0}`); // -> number
+        alert(`тип null : ${typeof null}`); // -> object
+        // Вывод: null это объект, оно так же как и 0 обозначает отсутствие значения (пусто, ещё ничего не положили), поэтому и попадает в отрезки <=0 и >=0, но не = 0. Схематически на отрезке null находилось бы параллельно нулю, оно как бы присутствует, но не относится ни к одному из отрезков и не к нулю.
+
+    </script>
+</body>
+
+</html>
