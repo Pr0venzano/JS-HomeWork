@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        2. С этого урока начинаем работать с функционалом интернет-магазина. Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров. Товары в корзине хранятся в массиве. Задачи:
+        a) Организовать такой массив для хранения товаров в корзине;
+        b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+        */
+
+        let goods_prices = [
+            ["яблоко", 5],
+            ["груша", 6],
+            ["апельсин", 3],
+            ["банан", 8],
+        ];
+
+        function basketFill(count) {
+            let random_cart = [];
+
+            for (let i = 0; i < count; i++) {
+                random_cart[i] = goods_prices[Math.floor(Math.random() * goods_prices.length)][0];
+            };
+
+            console.log(`Ваша корзина: ${random_cart}`);
+            return random_cart;
+        };
+
+        function stockCheck(item) {
+            for (let i = 0; i < goods_prices.length; i++) {
+                if (item == goods_prices[i][0]) return goods_prices[i][1];
+            };
+
+            return -1;
+        };
+
+        function countBasketPrice(customer_cart) {
+            let result = 0;
+            let out_of_stock = [];
+
+            customer_cart.forEach((item) => {
+                good_cost = stockCheck(item);
+
+                if (good_cost == -1) {
+                    out_of_stock.push(item);
+                } else {
+                    result = result + good_cost;
+                };
+            });
+
+            let warning_message = ""
+            if (out_of_stock.length > 0) warning_message = `Товаров ${out_of_stock} нет в наличии. `;
+            console.log(`${warning_message}Стоимость вашей корзины составляет ${result}руб.`)
+        };
+
+        let customer_cart = basketFill(5); // -> Ваша корзина: апельсин,груша,банан,груша,груша
+        countBasketPrice(customer_cart); // -> Стоимость вашей корзины составляет 29руб.
+
+        // тест функции stockCheck
+        const test_catr = ['яблоко', 'банан', 'ПОМИДОР'];
+        console.log(`Тестовая корзина: ${test_catr}`) // -> Тестовая корзина: яблоко,банан,ПОМИДОРЫ
+        countBasketPrice(test_catr); // -> Товаров ПОМИДОРЫ нет в наличии. Стоимость вашей корзины составляет 13руб.
+
+    </script>
+</body>
+
+</html>
