@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = []; // создание массива
+        let max_el = 100; // максимальный элемент
+        for (i = 0; i <= max_el; i++) { arr[i] = i; }; // заполнение массива
+
+        function get_prime_list(arr) {
+            let n = 0;
+
+            while (n < arr.length) {
+                if (arr[n] < 2) {
+                    arr.splice(n, 1);
+                    continue;
+                }; // числа 0 и 1 не простые
+
+                let composite_number = arr[n] + arr[n];
+                let i = n;
+
+                while (i <= arr.length) {
+                    if (arr[i] >= composite_number) {
+                        if (arr[i] == composite_number) arr.splice(i, 1);
+                        composite_number = composite_number + arr[n]
+                        continue;
+                    };
+
+                    i++
+                };
+
+                console.log(arr[n]); // вывод поэлементно
+                n++;
+            };
+
+            return arr;
+        };
+
+        console.log(get_prime_list(arr)); // вывод всего массива
+    </script>
+</body>
+
+</html>
