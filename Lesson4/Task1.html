@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xml:lang="ru">
+
+<head>
+	<title>ДЗ</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<script>
+		/* Была идея создать пустой объект, что бы его можно было вернуть пустым по условию задачи. Свойства добавлялись бы из массива, в котором перечислены имена свойств.
+		В цикле объекту добавлялось бы свойство из массива имён свойств и соответствующее значение из массива цифр (в обратном порядке).
+		Но я остановился на данной реализации, где объект не создаётся вовсе или в нужных случаях удаляются не заполненные свойства в целях экономии памяти.*/
+
+		while (true) {
+
+			function notValidCheck(my_number) {
+				if (my_number < 0 || my_number > 999 || Number.isNaN(my_number)) return true;
+				return false;
+			};
+
+
+			function numToObj(my_number) {
+
+				if (notValidCheck(+my_number)) return `Введено неверное значение или значение не в рамках условия`
+
+				let arr = my_number.split(''); //создание массива
+				let obj = { 'единицы': 0, 'десятки': 0, 'сотни': 0 };
+
+				let i = arr.length - 1
+				for (let el in obj) {
+					obj[el] = +arr[i];
+					if (isNaN(obj[el])) delete obj[el];
+					i--;
+				};
+				return obj;
+			};
+
+
+			let my_number = prompt(`Введите число от 0 до 999`);
+			if (my_number == null) break; // выход
+			console.log(numToObj(my_number));
+
+		};
+
+	</script>
+</body>
+
+</html>
