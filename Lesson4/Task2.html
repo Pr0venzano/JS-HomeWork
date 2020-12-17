@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>ДЗ</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script> // var1. Стоимость корзины считается каждый раз с 0 после добавления всех позиций.  
+        'use strict';
+
+        const priceList = {
+            "яблоко": 5,
+            "груша": 6,
+            "апельсин": 3,
+            "банан": 8,
+        };
+
+
+        const myBasket = {
+            content: [],
+            price: 0,
+            goods: Object.getOwnPropertyNames(priceList),
+
+            addToBasket(count) {
+                for (let i = 0; i < count; i++) {
+                    this.content.push(this.goods[Math.floor(Math.random() * this.goods.length)]);
+                };
+
+                console.log(`Ваша корзина: ${this.content}`);
+                return this.countBasketPrice()
+            },
+
+            clearBasket() {
+                this.content = [];
+                this.price = 0;
+                return `Корзина пуста`;
+            },
+
+            countBasketPrice() {
+                this.price = 0; // корзина пересчитывается заного
+                this.content.forEach((item) => { this.price = this.price + priceList[item]; });
+                return `Стоимость корзины: ${this.price}руб.`
+            },
+        };
+
+
+        console.log(myBasket.addToBasket(5));
+        console.log(myBasket.clearBasket());
+        console.log(myBasket.addToBasket(3));
+        console.log(myBasket.addToBasket(2));
+        console.log(myBasket.countBasketPrice());
+    </script>
+
+    <!-- <script> // var2. стоимость корзины высчитывается сразу при добавлении позиции.
+        'use strict';
+
+        const priceList = {
+            "яблоко": 5,
+            "груша": 6,
+            "апельсин": 3,
+            "банан": 8,
+        };
+
+
+        const myBasket = {
+            content: [],
+            price: 0,
+            goods: Object.getOwnPropertyNames(priceList),
+
+            addToBasket(count) {
+                for (let i = 0; i < count; i++) {
+                    let product = this.goods[Math.floor(Math.random() * this.goods.length)];
+                    this.content.push(product);
+                    this.countBasketPrice(product);
+                };
+
+                return `Ваша корзина: ${this.content}. Стоимость корзины: ${this.price}руб.`;
+            },
+
+            clearBasket() {
+                this.content = [];
+                this.price = 0;
+                return `Корзина пуста`;
+            },
+
+            countBasketPrice(product = 0) {
+                if (product == 0) return `Стоимость корзины: ${this.price}руб.`;
+                this.price = this.price + priceList[product];
+            },
+
+        };
+
+
+        console.log(myBasket.addToBasket(5));
+        console.log(myBasket.clearBasket());
+        console.log(myBasket.addToBasket(3));
+        console.log(myBasket.addToBasket(2));
+        console.log(myBasket.countBasketPrice());
+    </script> -->
+
+</body>
+
+</html>
