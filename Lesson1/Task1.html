@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+    'use strict';
+
+    function to_Fahrenheit(Tc) {
+        let Tf = 0
+        Tf = (9 / 5) * Tc + 32;
+        alert(`это ${Tf} градусов по фаренгейту`);
+    }
+
+    let temperature = +prompt('Введите температуру в цельсиях');
+
+    to_Fahrenheit(temperature)
+</script>
