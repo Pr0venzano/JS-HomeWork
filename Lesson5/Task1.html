@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>ДЗ</title>
+    <meta charset="UTF-8">
+
+<body>
+    <script>
+        /* 1. Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию. Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H. */
+        'use strict';
+
+        const headers = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+        function chessBoardGen() {
+            let flag = false;
+            for (let row = 0; row < headers.length + 1; row++) {
+                const trElem = document.createElement('tr');
+                trElem.textContent += row; // 1,2,3 
+                document.body.appendChild(trElem);
+                console.log(row % 2);
+
+                if (row % 2 == 0) {
+                    flag = false;
+                } else {
+                    flag = true;
+                };
+
+                for (let col = 0; col < headers.length; col++) {
+                    const cell = document.createElement('td');
+                    if (row > 0) cell.style.border = '1px solid #000000';
+                    cell.style.width = '20px';
+                    cell.style.height = '20px';
+                    cell.style.textAlign = 'center';
+
+                    if (row > 0) {
+                        if (flag) cell.style.background = 'black';
+                    } else {
+                        cell.textContent += headers[col];
+                    };
+                    trElem.appendChild(cell);
+                    flag = !flag;
+                };
+            };
+        };
+
+        chessBoardGen()
+    </script>
+</body>
+
+</html>
