@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function math_operation(a, b, operation) {
+            switch (operation) {
+                case "+": return `Сумма чисел = ${a + b}`;
+                case "-": return `Разница чисел = ${a - b}`;
+                case "*": return `Произведение чисел = ${a * b}`;
+                case "/": return `Частное чисел = ${a / b}`;
+                default: return 'Неизвестная операция';
+            };
+        }
+
+        const a = +prompt(`Введите первое число:`)
+        const operation = prompt(`Введите тип операции (+ - * /)`)
+        const b = +prompt(`Введите второе число:`)
+
+        console.log(math_operation(a, b, operation))
+    </script>
+</body>
+
+</html>
